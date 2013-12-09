@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<link rel='stylesheet' href="css/main.css">
+	</head>
+	<body>
+		<div class='header'>
+			<div class='contains-float'>
+				<div class='left'>
+					Welcome, <span id='myself' class='username'>unidentified user</span><input type=text class='hidden'>!
+				</div>
+				<div id='client_counter' class='right'>
+				Loading client count...
+				</div>
+			</div>
+
+			<div class='contains-float playlist-header'>
+				<div>
+					<span class='left'>
+						Playlist:
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class='playlist'>
+		<ul id='playlist'>
+		</ul>
+		</div>
+		<div class='radio'>
+			<div>
+				<div class='playing-song contains-float'>
+					<div class='text-cycle'>
+						<div class='text-element' id='song_title'></div>
+						<div class='text-element hidden' id='song_suggester'></div>
+					</div>
+					<div class='progressbar'><div></div></div>
+				</div>
+				<div class='button-control contains-float'>
+					<div>
+						<form id='suggest' ENCTYPE = "multipart/form-data" action="/envoyer_fichier" method="POST">
+							<input type='file' name='fichier' style='display:none;' multiple>
+							<button id='submit'>Suggest song...</button>
+							<progress id='upload_progress' style='display:none;' value = '0' max = '100'></progress>
+						</form>
+					</div>
+					<div>
+					<div id='play'></div>
+					<div id='pause'></div>
+					<div id='stop'></div>
+					<div id='shuffle'></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="script/jquery_2_0_3.js"></script>
+		<script src="shared/event_types.js"></script>
+		<script src="script/playlist.js"></script>
+		<script src="script/voting.js"></script>
+		<script src="script/main.js"></script>
+		<script src="script/users.js"></script>
+	</body>
+</html>

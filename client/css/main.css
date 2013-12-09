@@ -1,0 +1,496 @@
+html, body {
+    /*background: none repeat scroll 0 0 #8888FF;*/
+    background: none repeat scroll 0 0 #EEEEEE;
+    color: #666666;
+    font-family: monospace,sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+.header
+{
+	position:fixed;
+	top:0;
+	left:0;
+	background:black;
+	width:100%;
+}
+
+.header>div:first-child
+{
+	color:white;
+	width:960px;
+	margin:0 auto;
+}
+
+div.playlist
+{
+	width:960px;
+	min-height: 100%;
+	margin: 0 auto;
+	background:white;
+	border-left:1px solid black;
+	border-right:1px solid black;
+	overflow:auto;
+}
+
+ul#playlist
+{
+	display:block;
+	list-style-type:none;
+	padding: 40px 0 105px 0;
+	margin: 0;
+	counter-reset: songCounter;
+}
+ul#playlist>li
+{
+	display:block;
+	background:#F6F6F6;
+	padding:15px;
+	margin:10px;
+	border:1px solid black;
+	border-radius:10px;
+	overflow: hidden;
+}
+
+div.song_content
+{
+	overflow: auto;
+}
+
+div.song_content:after
+{
+	display:block;
+	height:100%;
+	float:right;
+	margin:40px;
+	counter-increment: songCounter;      /* Increment the section counter */
+	content: counter(songCounter); /* Display the counter */
+}
+
+.radio
+{
+	position:fixed;
+	bottom:0;
+	left:0;
+	background:black;
+	width:100%;
+}
+.radio>div
+{
+	color:white;
+	width:960px;
+	margin:0 auto;
+}
+
+.album_art>img
+{
+	height:100px;
+	width:auto;
+	margin-right: 15px;
+}
+
+.album_art
+{
+	float:left;
+}
+
+.song_info
+{
+	float:left;
+	max-width:100%;
+}
+
+.song_info>div
+{
+
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.score
+{
+	float:left;
+	font-size:30px;
+	width:40px;
+	color:#222222;
+	text-align: center;
+	vertical-align: centered;
+	margin:0 5px;
+	line-height: 33px;
+	padding-top:13px;
+}
+
+.score .upvote
+{
+	background-size: 100% 100%;
+	background-image: url('/images/arrow_up.png');
+	content: none;
+	width:20px;
+	height:20px;
+	margin: 0 auto;
+}
+
+.score .downvote
+{
+	background-size: 100% 100%;
+	background-image: url('/images/arrow_down.png');
+	content: none;
+	width:20px;
+	height:20px;
+	margin: 0 auto;
+}
+
+.score .upvote.hovered, .score .downvote.hovered
+{
+	cursor: pointer;
+}
+
+.score .upvote.hovered
+{
+	background-image: url('/images/arrow_up_green.png');
+}
+
+.score .downvote.hovered
+{
+	background-image: url('/images/arrow_down_red.png');
+}
+
+#myself:hover 
+{
+	color:cyan;
+	cursor:pointer;
+}
+
+input.error
+{
+	background: #FFCCCC;
+	border: 2px solid #EE2222;
+}
+
+.left
+{
+	float:left;
+}
+
+.right
+{
+	float:right;
+}
+
+.hidden
+{
+	display:none !important;
+}
+
+#play
+{
+	background:transparent;
+	border: none;
+	background-image: url('/images/play.png');
+	background-size: 100% 100%;
+	width:30px;
+	height:30px;
+	display:block;
+	cursor:pointer;
+	margin:5px;
+	float:left;
+}
+
+#pause
+{
+	background:transparent;
+	border: none;
+	background-image: url('/images/pause.png');
+	background-size: 100% 100%;
+	width:30px;
+	height:30px;
+	display:block;
+	cursor:pointer;
+	margin:5px;
+	float:left;
+}
+
+#stop
+{
+	background:transparent;
+	border: none;
+	background-image: url('/images/stop.png');
+	background-size: 100% 100%;
+	width:30px;
+	height:30px;
+	display:block;
+	cursor:pointer;
+	margin:5px;
+	float:left;
+}
+
+#shuffle
+{
+	background:transparent;
+	border: none;
+	background-image: url('/images/shuffle.png');
+	background-size: 100% 100%;
+	width:30px;
+	height:30px;
+	display:block;
+	cursor:pointer;
+	margin:5px;
+	float:left;
+}
+
+#play:hover
+{
+	background-image: url('/images/play_hover.png');
+}
+
+#pause:hover
+{
+	background-image: url('/images/pause_hover.png');
+}
+
+#shuffle:hover
+{
+	background:transparent;
+	border: none;
+	background-image: url('/images/shuffle_hover.png');
+	background-size: 100% 100%;
+	width:30px;
+	height:30px;
+	display:block;
+	cursor:pointer;
+	margin:5px;
+	float:left;
+}
+
+#stop:hover
+{
+	background-image: url('/images/stop_hover.png');
+}
+
+#submit
+{
+	background: transparent;
+	background-color:#D0D0D0;
+	border: 1px solid white;
+	border-radius:20px;
+	color:white;
+	padding:5px;
+	width:100%;
+}
+
+.playing-song
+{
+	margin-bottom:10px;
+}
+
+.centered
+{
+	margin: 0 auto;
+}
+
+.button-control
+{
+	width:160px;
+	margin:0 auto;
+}
+
+.contains-float
+{
+	overflow:auto;
+}
+
+.progressbar
+{
+	width:99%;
+	height:3px;
+	border:1px solid #D8D8D8;
+	border-radius:10px;
+}
+
+.progressbar>div
+{
+	width:0px;
+	height:3px;
+	background-image: linear-gradient(to bottom, yellow, red);
+}
+
+.text-cycle>.text-element
+{
+	min-height: 20px;
+	position:absolute;
+	display: inline-block;
+}
+
+.text-cycle
+{
+	overflow:hidden;
+	min-height:20px;
+	position:relative;
+}
+
+#upload_progress
+{
+	width:158px;
+}
+
+button:hover
+{
+	cursor:pointer;
+}
+
+.playlist-header
+{
+	/*background:#00B192;*/
+	background: orange;
+	border-top:1px solid white;
+	color:white;
+}
+
+.playlist-header>div:first-child
+{
+	width:960px;
+	margin: 0 auto;
+}
+
+@media (max-width: 960px)
+{
+	html, body
+	{
+    	font-family: roboto;
+    	font-size: 16px;
+	}
+
+	.radio>div, div.playlist, .header>div:first-child, .playlist-header>div:first-child
+	{
+		width:auto;
+	}
+
+
+	.score
+	{
+		float:none;
+		line-height:100%;
+		width:auto;
+		padding:0;
+		margin:0;
+		border-bottom:1px solid black;
+		overflow:auto;
+		font-size: 18px;
+	}
+
+	.score .value
+	{
+		width:20%;
+		float:left;
+	}
+
+	.score .upvote
+	{
+		float:left;
+		width:40%;
+		background-repeat: no-repeat;
+		background-size: 15px 15px;
+		background-position: center;
+		border-right:1px solid black;
+		margin-right:-1px;
+		height:20px;
+	}
+
+	.score .downvote
+	{
+		float:right;
+		width:40%;
+		margin-left:-1px;
+		background-repeat: no-repeat;
+		background-size: 15px 15px;
+		background-position: center;
+		border-left:1px solid black;
+		height:20px;
+	}
+
+
+	ul#playlist>li
+	{
+		padding:0;
+	}
+
+
+	#playlist .album_art
+	{
+		float:none;
+	}
+	#playlist .album_art img
+	{
+		display:block;
+		margin: 0 auto;
+	}
+	#playlist .song_info
+	{
+		float:left;
+		display:block;
+		margin: 0 auto;
+		font-size: 14px;
+	}
+
+	.hideOnPhone
+	{
+		display:none;
+	}
+
+	.song_content
+	{
+		padding:10px;
+	}
+
+	.button-control
+	{
+		width:auto;
+	}
+
+	.button-control>div
+	{
+		float:left;
+		margin-right:5px;
+	}
+
+	.button-control>div:first-child
+	{
+		float:right;
+	}
+
+	.playing-song
+	{
+		margin-bottom:1px;
+	}
+
+	#submit
+	{
+		margin-top:5px;
+	}
+
+	#playlist .album_art img
+	{
+		float:left;
+		height:55px;
+		margin-right:6px;
+	}
+
+	.song_content
+	{
+		padding:0;
+	}
+
+	#playlist .song_info
+	{
+		margin-top:6px;
+	}
+
+	div.song_content:after
+	{
+		margin: 13px;	
+	}
+}

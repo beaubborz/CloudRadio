@@ -1,0 +1,4 @@
+Randomize
+Upvote/downvote fonctionnels (vue)
+Library / cache de chansons
+Chat

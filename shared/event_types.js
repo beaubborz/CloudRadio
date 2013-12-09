@@ -1,0 +1,11 @@
+var EVENT_TYPES = {
+	PLAYLIST_CHANGED: 1,
+	USERLIST_CHANGED: 2,
+	USERNAME_CHANGED: 3,
+	SONG_PROGRESS_CHANGED: 4,
+	SONG_PLAYING: 5
+};
+
+//pour node:
+if(typeof exports != 'undefined')
+exports.EVENT_TYPES = EVENT_TYPES;
