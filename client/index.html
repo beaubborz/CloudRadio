@@ -16,16 +16,26 @@
 			</div>
 
 			<div class='contains-float playlist-header'>
-				<div>
-					<span class='left'>
-						Playlist:
-					</span>
+				<div class="list-types-buttons">
+					<a class='left' href="#" onClick="showListAndControls('playlist'); scrollToTop(); return 0;">
+						Playlist
+					</a>
+					<a class='left' href="#" onClick="showListAndControls('chat'); setTimeout(function(){scrollToBottom()}, 200); return 0;">
+						Messages
+					</a>
 				</div>
 			</div>
 		</div>
 		<div class='playlist'>
-		<ul id='playlist'>
-		</ul>
+
+			<ul id='playlist'>
+			<!--Song entries will appear here.-->
+			</ul>
+
+			<ul id='chat'>
+			<!--Chat messages will appear here.-->
+			</ul>
+
 		</div>
 		<div class='radio'>
 			<div>
@@ -36,7 +46,7 @@
 					</div>
 					<div class='progressbar'><div></div></div>
 				</div>
-				<div class='button-control contains-float'>
+				<div class='playlist-control contains-float isControl'>
 					<div>
 						<form id='suggest' ENCTYPE = "multipart/form-data" action="/envoyer_fichier" method="POST">
 							<input type='file' name='fichier' style='display:none;' multiple>
@@ -50,6 +60,12 @@
 					<div id='stop'></div>
 					<div id='shuffle'></div>
 					</div>
+				</div>
+
+				<div class='chat-control isControl'>
+					<form id='chat'>
+						<input type=text><input type='submit' value='send'>
+					</form>
 				</div>
 			</div>
 		</div>

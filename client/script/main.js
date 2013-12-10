@@ -42,10 +42,8 @@ $('form#suggest input[type=file]').change(function(){
 });
 
 var source = new EventSource('/events');
-console.log('event source linked.\n');
 
 source.addEventListener('message', function(e) {
-	console.log(e.data);
 	var message = JSON.parse(e.data);
 	switch(message.type)
 	{
@@ -63,6 +61,9 @@ source.addEventListener('message', function(e) {
 		break;
 		case EVENT_TYPES.SONG_PLAYING:
 			setSongPlaying(JSON.parse(message.song));
+		break;
+		case EVENT_TYPES.NEW_MESSAGE:
+			addMessageToChat(message.userid, message.message);
 		break;
 	}
 }, false);
@@ -102,14 +103,74 @@ $('#shuffle').click(function(e){
 	$.get('/shuffle_playlist', null);
 });
 
+$('form#chat').submit(function(e){
+	e.preventDefault();
+	$.post('/chat', {message: $('form#chat>[type=text]').val()});
+	$('form#chat>[type=text]').val('');
+});
+
 function setSongProgress(percent)
 {
-	console.log(percent+'%');
 	$('.progressbar>div').css('width', percent+'%');
+}
+
+function addMessageToChat(userId, text)
+{
+	$('.playlist>ul#chat').append('<li><span class="username" userid="'+userId+'">'+getUser(userId).username+'</span><span class="message">'+text.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>?/gi, '')+'<span></li>');
+	if($('ul#chat').is(':visible'))
+	{
+		scrollToBottom();
+	}
+}
+
+//show the list in the playlist block having the specified id
+function showList(listId)
+{
+	$('.playlist>ul').each(function(){
+		if($(this).attr('id')==listId)
+		{
+			$(this).show();
+		}
+		else
+		{
+			$(this).hide();
+		}
+	});
+}
+
+function showControls(controlClass)
+{
+	$('.isControl').each(function(){
+		if($(this).hasClass(controlClass))
+		{
+			$(this).show();
+		}
+		else
+		{
+			$(this).hide();
+		}
+	});
+}
+
+function showListAndControls(listId)
+{
+	showList(listId);
+	showControls(listId+'-control');
+}
+
+function scrollToTop()
+{
+	$('html, body').scrollTop(0);
+}
+
+function scrollToBottom()
+{
+	$('html, body').scrollTop($(document).height());
 }
 
 //what to do at the opening of the page.
 $(document).ready(function(){
+	showListAndControls('playlist');
 	refreshPlaylist();
 	refreshClientCount();
 	refreshCurrentPlayingSong();

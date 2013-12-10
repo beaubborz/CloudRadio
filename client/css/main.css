@@ -36,7 +36,7 @@ div.playlist
 	overflow:auto;
 }
 
-ul#playlist
+ul#playlist, ul#chat
 {
 	display:block;
 	list-style-type:none;
@@ -44,6 +44,7 @@ ul#playlist
 	margin: 0;
 	counter-reset: songCounter;
 }
+
 ul#playlist>li
 {
 	display:block;
@@ -53,6 +54,39 @@ ul#playlist>li
 	border:1px solid black;
 	border-radius:10px;
 	overflow: hidden;
+}
+
+ul#chat>li
+{
+	display:block;
+	background:#F6F6F6;
+	padding:15px;
+	margin:10px;
+	border:1px solid black;
+	border-radius:10px;
+	overflow: hidden;
+}
+
+ul#chat>li .username
+{
+	font-weight: bold;
+}
+
+ul#chat>li .username:after
+{
+	content: ': ';
+}
+
+form#chat>[type=submit]
+{
+	width:18%;
+	padding-left:0;
+	padding-right:0;
+}
+
+form#chat>[type=text]
+{
+	width:80%;
 }
 
 div.song_content
@@ -109,6 +143,26 @@ div.song_content:after
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+.list-types-buttons>a
+{
+	margin-right:10px;
+	text-decoration: none;
+	color:white;
+	font-weight: bold;
+
+}
+
+.list-types-buttons>a:after
+{
+	content: "|";
+	color:white;
+}
+
+.list-types-buttons>a:hover
+{
+	color:cyan;
 }
 
 .score
@@ -271,7 +325,7 @@ input.error
 	background-image: url('/images/stop_hover.png');
 }
 
-#submit
+#submit, input[type=submit]
 {
 	background: transparent;
 	background-color:#D0D0D0;
@@ -279,6 +333,10 @@ input.error
 	border-radius:20px;
 	color:white;
 	padding:5px;
+}
+
+#submit
+{
 	width:100%;
 }
 
@@ -292,7 +350,7 @@ input.error
 	margin: 0 auto;
 }
 
-.button-control
+.playlist-control
 {
 	width:160px;
 	margin:0 auto;
@@ -446,18 +504,18 @@ button:hover
 		padding:10px;
 	}
 
-	.button-control
+	.playlist-control
 	{
 		width:auto;
 	}
 
-	.button-control>div
+	.playlist-control>div
 	{
 		float:left;
 		margin-right:5px;
 	}
 
-	.button-control>div:first-child
+	.playlist-control>div:first-child
 	{
 		float:right;
 	}

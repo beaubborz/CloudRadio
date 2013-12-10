@@ -251,6 +251,14 @@ app.get('/shuffle_playlist', function(req, res){
 	res.end('playlist shuffled.');
 });
 
+app.post('/chat', function(req, res){
+	var sentByUserID = users.getUserIDFromRequest(req);
+	var message = req.body.message;
+
+	publisherClient.publish('updates', JSON.stringify({'type':EVENT_TYPES.NEW_MESSAGE, 'userid': sentByUserID, 'message': message}));
+	res.end('message sent.');
+});
+
 app.listen(8080);
 
 

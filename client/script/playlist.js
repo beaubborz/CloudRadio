@@ -21,9 +21,7 @@ function createPLaylistBlock(playlist_entry)
 
 function refreshPlaylist()
 {
-	console.log('refreshing playlist...');
 	$.get('/get_playlist', function(data){
-		console.log(data);
 		var newlist = '';
 		for(var index in data)
 		{
@@ -42,8 +40,6 @@ function setSongPlaying(song)
 function refreshCurrentPlayingSong()
 {
 	$.get('/get_current_song', function(data){
-		console.log('Current playing song: ');
-		console.log(data);
 		if(data != null)
 			setSongPlaying(data);
 	}, 'json');
@@ -57,7 +53,6 @@ function animateSongInfoCycle()
 
 	var state = 0;
 	setInterval(function(){
-		console.log('anim. started.');
 		if((state++)%2 == 0)
 		{
 			title.animate(
